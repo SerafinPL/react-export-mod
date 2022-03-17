@@ -1,10 +1,12 @@
 import classes from './App.module.scss';
 
-function App() {
+import Modal from './Modal/Modal'
+
+const  App = () => {
   return (
     <div className={classes.App}>
-      <header className={classes.App-header}>
-        
+      <header className={classes.AppHeader}>
+        <Modal/>
       </header>
     </div>
   );
