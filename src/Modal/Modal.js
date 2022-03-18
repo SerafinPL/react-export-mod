@@ -21,7 +21,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DatePicker, DateTimePicker, TimePicker } from "@mui/lab";
 
-import useFetchData from '../fetchData';
+import useFetchData from "../fetchData";
 
 const Modal = () => {
   const TypoStyleOBJ = {
@@ -31,10 +31,21 @@ const Modal = () => {
     m: 2,
     mt: 3,
   };
+  const { data, fetchData } = useFetchData();
 
-  const { data, fetchData} = useFetchData();
+  const [email, setEmail] = useState("");
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
 
   const [value, setValue] = useState(new Date());
+
+  const [name, setName] = useState("");
+
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
 
   const [typeOfExport, setTypeOfExport] = useState("Excel");
 
@@ -55,9 +66,15 @@ const Modal = () => {
   };
 
   const clickHandker = () => {
-    fetchData()
-  }
-
+    fetchData({
+      name: name,
+      typeOfExport: typeOfExport,
+      email: email,
+      typeOfSchedule: typeOfSchedule,
+      dataTime: value,  
+      dayofWeek: dayofWeek
+    });
+  };
 
   console.log(typeOfExport, typeOfSchedule);
 
@@ -95,6 +112,8 @@ const Modal = () => {
                 label="Shareablee Report"
                 variant="outlined"
                 sx={{ width: "95%", height: "50px", m: 2 }}
+                value={name}
+                onChange={handleChangeName}
               />
 
               <FormControl sx={{ height: "50px", m: 1, pl: 2, color: "#000" }}>
@@ -123,6 +142,8 @@ const Modal = () => {
                 label="client@company.com"
                 variant="outlined"
                 sx={{ width: "95%", height: "50px", m: 2 }}
+                value={email}
+                onChange={handleChangeEmail}
               />
               <FormControl
                 sx={{
@@ -227,11 +248,20 @@ const Modal = () => {
               )}
             </Box>
           </Box>
-          <Box sx={{justifyContent: 'end', display: 'flex' }}>
-           
-              <Button variant="outlined" sx={{m:3}}>Cancel</Button>
-              <Button variant="contained" sx={{m:3}} onClick={clickHandker}>OK</Button>
-           
+          <Box sx={{ justifyContent: "end", display: "flex" }}>
+            <Button variant="outlined" sx={{ m: 3 }}>
+              Cancel
+            </Button>
+            <Button variant="contained" sx={{ m: 3 }} onClick={clickHandker}>
+              OK
+            </Button>
+          </Box>
+          <Box sx={{ justifyContent: "end", display: "flex" }}>
+            <Typography variant="button" sx={{ m: 3, color: "#000" }}>
+              {" "}
+              Answer form Host: {data === undefined ? "" : data.toString()}
+            </Typography>
+            {console.log(data)}
           </Box>
         </main>
       </div>
