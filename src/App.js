@@ -6,7 +6,7 @@ const  App = () => {
   return (
     <div className={classes.App}>
       <header className={classes.AppHeader}>
-        <Modal/>
+        <Modal />
       </header>
     </div>
   );
