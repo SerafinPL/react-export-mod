@@ -4,7 +4,7 @@ const useFetchData = () => {
   const [data, setData] = useState(undefined);
 
   const fetchData = useCallback((content) => {
-    console.log(content)
+  
     fetch(`https://postman-echo.com/post`, {
       method: "POST",
       mode: "no-cors",
@@ -18,12 +18,12 @@ const useFetchData = () => {
       body: JSON.stringify(content),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
 
         return res;
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setData(res.ok)
         return res;
       })

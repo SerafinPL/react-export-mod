@@ -71,12 +71,12 @@ const Modal = () => {
       typeOfExport: typeOfExport,
       email: email,
       typeOfSchedule: typeOfSchedule,
-      dataTime: value,  
-      dayofWeek: dayofWeek
+      dataTime: value,
+      dayofWeek: dayofWeek,
     });
   };
 
-  console.log(typeOfExport, typeOfSchedule);
+  
 
   return (
     <div className={classes.Backdrop}>
@@ -97,13 +97,13 @@ const Modal = () => {
               <Typography sx={TypoStyleOBJ}>E-mail to</Typography>
               <Typography sx={TypoStyleOBJ}>Schedule</Typography>
               {typeOfSchedule === "date" && (
-                <Typography sx={TypoStyleOBJ}>Date</Typography>
+                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Date</Typography>
               )}
               {typeOfSchedule === "daily" && (
-                <Typography sx={TypoStyleOBJ}>Everyday at</Typography>
+                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Everyday at</Typography>
               )}
               {typeOfSchedule === "weekly" && (
-                <Typography sx={TypoStyleOBJ}>Every</Typography>
+                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Every</Typography>
               )}
             </Box>
             <Box>
@@ -193,7 +193,7 @@ const Modal = () => {
                     }}
                     renderInput={(params) => (
                       <TextField
-                        sx={{ width: "95%", height: "50px", m: 2 }}
+                        sx={{ width: "95%", height: "50px", m: 2, mt: 5 }}
                         {...params}
                       />
                     )}
@@ -210,7 +210,7 @@ const Modal = () => {
                     }}
                     renderInput={(params) => (
                       <TextField
-                        sx={{ width: "95%", height: "50px", m: 2 }}
+                        sx={{ width: "95%", height: "50px", m: 2, mt: 5 }}
                         {...params}
                       />
                     )}
@@ -218,33 +218,60 @@ const Modal = () => {
                 </LocalizationProvider>
               )}
               {typeOfSchedule === "weekly" && (
-                <FormControl
-                  sx={{
-                    width: "95%",
-                    height: "50px",
-                    m: 1,
-                    color: "#000",
-                  }}
-                >
-                  <InputLabel id="demo-simple-select-label">
-                    Day of week
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={dayofWeek}
-                    label="Day of week"
-                    onChange={handleChangedayofWeek}
+                <Box>
+                  <FormControl
+                    sx={{
+                      width: "20%",
+                      height: "50px",
+                      m: 1,
+                      color: "#000",
+                      float: "left",
+                      mt: 5
+                    }}
                   >
-                    <MenuItem value={"Mon"}>Mon</MenuItem>
-                    <MenuItem value={"Tue"}>Tue</MenuItem>
-                    <MenuItem value={"Wed"}>Wed</MenuItem>
-                    <MenuItem value={"Thu"}>Thu</MenuItem>
-                    <MenuItem value={"Fri"}>Fri</MenuItem>
-                    <MenuItem value={"Sat"}>Sat</MenuItem>
-                    <MenuItem value={"Sun"}>Sun</MenuItem>
-                  </Select>
-                </FormControl>
+                    <InputLabel id="demo-simple-select-label">
+                      Day of week
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={dayofWeek}
+                      label="Day of week"
+                      onChange={handleChangedayofWeek}
+                    >
+                      <MenuItem value={"Mon"}>Mon</MenuItem>
+                      <MenuItem value={"Tue"}>Tue</MenuItem>
+                      <MenuItem value={"Wed"}>Wed</MenuItem>
+                      <MenuItem value={"Thu"}>Thu</MenuItem>
+                      <MenuItem value={"Fri"}>Fri</MenuItem>
+                      <MenuItem value={"Sat"}>Sat</MenuItem>
+                      <MenuItem value={"Sun"}>Sun</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Typography sx={{
+                      width: "5%",
+                      height: "50px",
+                      m: 1,
+                      color: "#000",
+                      float: "left",
+                      mt: 5
+                    }}> at </Typography>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <TimePicker
+                      label="Time"
+                      value={value}
+                      onChange={(newValue) => {
+                        setValue(newValue);
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          sx={{ width: "55%", height: "50px", m: 1, mt: 5 }}
+                          {...params}
+                        />
+                      )}
+                    />
+                  </LocalizationProvider>
+                </Box>
               )}
             </Box>
           </Box>
@@ -261,7 +288,7 @@ const Modal = () => {
               {" "}
               Answer form Host: {data === undefined ? "" : data.toString()}
             </Typography>
-            {console.log(data)}
+            
           </Box>
         </main>
       </div>
