@@ -86,4 +86,6 @@ describe(" <Modal /> Component! ", () => {
     const ItIsEvery = screen.getByText("Every");
     expect(ItIsEvery).toBeInTheDocument();
   });
+
+  
 });
