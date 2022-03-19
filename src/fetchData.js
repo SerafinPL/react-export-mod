@@ -8,24 +8,24 @@ const useFetchData = () => {
     fetch(`https://postman-echo.com/post`, {
       method: "POST",
       mode: "no-cors",
-      headers: {
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "true",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-      },
+      // headers: {
+      //   // "Access-Control-Allow-Headers": "Content-Type",
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Credentials": "true",
+      //   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+      // },
       body: JSON.stringify(content),
     })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
 
         return res;
       })
-      .then((res) => {
-        // console.log(res);
-        setData(res.ok)
-        return res;
+      .then((data) => {
+        console.log(data);
+        setData(data.ok)
+        return data;
       })
       .catch((err) => {
         console.log(err);
