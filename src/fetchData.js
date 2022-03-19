@@ -21,7 +21,7 @@ const useFetchData = () => {
       .then((res) => {
         console.log(res);
 
-        return res;
+        return res.json();
       })
       .then((data) => {
         console.log(data);
@@ -30,7 +30,7 @@ const useFetchData = () => {
       })
       .catch((err) => {
         console.log(err);
-
+        setData(err)
        
       });
   }, []);
