@@ -76,20 +76,15 @@ const Modal = () => {
     });
   };
 
-  
-
   return (
     <div className={classes.Backdrop}>
       <div className={classes.Modal}>
         <header className={classes.ModalHeader}>Export Report</header>
         <main>
           <Box
-            // component="form"
             sx={{
               display: "flex",
             }}
-            noValidate
-            autoComplete="off"
           >
             <Box sx={{ width: "320px" }}>
               <Typography sx={TypoStyleOBJ}>Report Name</Typography>
@@ -97,13 +92,15 @@ const Modal = () => {
               <Typography sx={TypoStyleOBJ}>E-mail to</Typography>
               <Typography sx={TypoStyleOBJ}>Schedule</Typography>
               {typeOfSchedule === "date" && (
-                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Date</Typography>
+                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>Date</Typography>
               )}
               {typeOfSchedule === "daily" && (
-                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Everyday at</Typography>
+                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>
+                  Everyday at
+                </Typography>
               )}
               {typeOfSchedule === "weekly" && (
-                <Typography sx={{...TypoStyleOBJ, mt: 5}}>Every</Typography>
+                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>Every</Typography>
               )}
             </Box>
             <Box>
@@ -226,7 +223,7 @@ const Modal = () => {
                       m: 1,
                       color: "#000",
                       float: "left",
-                      mt: 5
+                      mt: 5,
                     }}
                   >
                     <InputLabel id="demo-simple-select-label">
@@ -248,14 +245,19 @@ const Modal = () => {
                       <MenuItem value={"Sun"}>Sun</MenuItem>
                     </Select>
                   </FormControl>
-                  <Typography sx={{
+                  <Typography
+                    sx={{
                       width: "5%",
                       height: "50px",
                       m: 1,
                       color: "#000",
                       float: "left",
-                      mt: 5
-                    }}> at </Typography>
+                      mt: 5,
+                    }}
+                  >
+                    {" "}
+                    at{" "}
+                  </Typography>
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <TimePicker
                       label="Time"
@@ -288,7 +290,6 @@ const Modal = () => {
               {" "}
               Answer form Host: {data === undefined ? "" : data.toString()}
             </Typography>
-            
           </Box>
         </main>
       </div>
