@@ -23,8 +23,10 @@ import { DatePicker, DateTimePicker, TimePicker } from "@mui/lab";
 
 import useFetchData from "../fetchData";
 import RadioComponent from "../Components/RadioComponent";
+import { weeksToDays } from "date-fns";
 
 const Modal = () => {
+
   const TypoStyleOBJ = {
     textAlign: "left",
     color: "#000",
@@ -43,6 +45,10 @@ const Modal = () => {
     { value: "daily", label: "Daily" },
     { value: "weekly", label: "Weekly" },
   ];
+
+  const weeksToDays =['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+
   const { data, fetchData } = useFetchData();
 
   const [email, setEmail] = useState("");
@@ -123,26 +129,7 @@ const Modal = () => {
                 onChange={handleChangeName}
               />
 
-              {/* <FormControl sx={{ height: "50px", m: 1, pl: 2, color: "#000" }}>
-                <RadioGroup
-                  row
-                  
-                  sx={{ height: "50px", textAlign: "left" }}
-                  value={typeOfExport}
-                  onChange={handleChangeTypeOfExport}
-                >
-                  <FormControlLabel
-                    value="Excel"
-                    control={<Radio />}
-                    label="Excel"
-                  />
-                  <FormControlLabel
-                    value="CSV"
-                    control={<Radio />}
-                    label="CSV"
-                  />
-                </RadioGroup>
-              </FormControl> */}
+         
               <RadioComponent
                 controlStyle={{ height: "50px", m: 1, pl: 2, color: "#000" }}
                 radioStyle={{ height: "50px", textAlign: "left" }}
@@ -226,14 +213,8 @@ const Modal = () => {
                       value={dayofWeek}
                       label="Day of week"
                       onChange={handleChangedayofWeek}
-                    >
-                      <MenuItem value={"Mon"}>Mon</MenuItem>
-                      <MenuItem value={"Tue"}>Tue</MenuItem>
-                      <MenuItem value={"Wed"}>Wed</MenuItem>
-                      <MenuItem value={"Thu"}>Thu</MenuItem>
-                      <MenuItem value={"Fri"}>Fri</MenuItem>
-                      <MenuItem value={"Sat"}>Sat</MenuItem>
-                      <MenuItem value={"Sun"}>Sun</MenuItem>
+                    >{weeksToDays.map(item => (<MenuItem value={item}>{item}</MenuItem>))}
+                    
                     </Select>
                   </FormControl>
                   <Typography
