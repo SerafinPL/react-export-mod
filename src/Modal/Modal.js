@@ -213,7 +213,7 @@ const Modal = () => {
                       value={dayofWeek}
                       label="Day of week"
                       onChange={handleChangedayofWeek}
-                    >{weeksToDays.map(item => (<MenuItem value={item}>{item}</MenuItem>))}
+                    >{weeksToDays.map(item => (<MenuItem key={item} value={item}>{item}</MenuItem>))}
                     
                     </Select>
                   </FormControl>
