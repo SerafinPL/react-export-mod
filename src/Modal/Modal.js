@@ -26,7 +26,6 @@ import RadioComponent from "../Components/RadioComponent";
 import { weeksToDays } from "date-fns";
 
 const Modal = () => {
-
   const TypoStyleOBJ = {
     textAlign: "left",
     color: "#000",
@@ -46,8 +45,7 @@ const Modal = () => {
     { value: "weekly", label: "Weekly" },
   ];
 
-  const weeksToDays =['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-
+  const weeksToDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   const { data, fetchData } = useFetchData();
 
@@ -129,7 +127,6 @@ const Modal = () => {
                 onChange={handleChangeName}
               />
 
-         
               <RadioComponent
                 controlStyle={{ height: "50px", m: 1, pl: 2, color: "#000" }}
                 radioStyle={{ height: "50px", textAlign: "left" }}
@@ -157,7 +154,7 @@ const Modal = () => {
                 onChange={handleChangeTypeOfSchedule}
                 arrayOptions={arrayOfSecondOptions}
               />
-              
+
               {typeOfSchedule === "date" && (
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DateTimePicker
@@ -213,8 +210,12 @@ const Modal = () => {
                       value={dayofWeek}
                       label="Day of week"
                       onChange={handleChangedayofWeek}
-                    >{weeksToDays.map(item => (<MenuItem key={item} value={item}>{item}</MenuItem>))}
-                    
+                    >
+                      {weeksToDays.map((item) => (
+                        <MenuItem key={item} value={item}>
+                          {item}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                   <Typography
@@ -270,3 +271,6 @@ const Modal = () => {
 };
 
 export default Modal;
+
+
+
