@@ -30,10 +30,19 @@ const Modal = () => {
     color: "#000",
     height: "50px",
     m: 2,
-    mt: 5,
+    mt: 3,
   };
 
-  const arrayOfFirstOptions = [{value: 'Excel', label: 'Excel'}, {value: 'CSV', label: 'CSV'}]
+  const arrayOfFirstOptions = [
+    { value: "Excel", label: "Excel" },
+    { value: "CSV", label: "CSV" },
+  ];
+  const arrayOfSecondOptions = [
+    { value: "noRepeat", label: "No Repeat" },
+    { value: "date", label: "Specific Date" },
+    { value: "daily", label: "Daily" },
+    { value: "weekly", label: "Weekly" },
+  ];
   const { data, fetchData } = useFetchData();
 
   const [email, setEmail] = useState("");
@@ -98,9 +107,7 @@ const Modal = () => {
                 <Typography sx={TypoStyleOBJ}>Date</Typography>
               )}
               {typeOfSchedule === "daily" && (
-                <Typography sx={TypoStyleOBJ}>
-                  Everyday at
-                </Typography>
+                <Typography sx={TypoStyleOBJ}>Everyday at</Typography>
               )}
               {typeOfSchedule === "weekly" && (
                 <Typography sx={TypoStyleOBJ}>Every</Typography>
@@ -136,7 +143,13 @@ const Modal = () => {
                   />
                 </RadioGroup>
               </FormControl> */}
-              <RadioComponent radioStyle={{ height: "50px", textAlign: "left" }} value={typeOfExport} onChange={handleChangeTypeOfExport} arrayOptions={arrayOfFirstOptions}/>
+              <RadioComponent
+                controlStyle={{ height: "50px", m: 1, pl: 2, color: "#000" }}
+                radioStyle={{ height: "50px", textAlign: "left" }}
+                value={typeOfExport}
+                onChange={handleChangeTypeOfExport}
+                arrayOptions={arrayOfFirstOptions}
+              />
               <TextField
                 id="email"
                 label="client@company.com"
@@ -145,42 +158,19 @@ const Modal = () => {
                 value={email}
                 onChange={handleChangeEmail}
               />
-              <FormControl
-                sx={{
+              <RadioComponent
+                controlStyle={{
                   width: "100%",
                   height: "50px",
                   m: 1,
                   pl: 2,
                   color: "#000",
                 }}
-              >
-                <RadioGroup
-                  row
-                  value={typeOfSchedule}
-                  onChange={handleChangeTypeOfSchedule}
-                >
-                  <FormControlLabel
-                    value="noRepeat"
-                    control={<Radio />}
-                    label="No Repeat"
-                  />
-                  <FormControlLabel
-                    value="date"
-                    control={<Radio />}
-                    label="Specific Date"
-                  />
-                  <FormControlLabel
-                    value="daily"
-                    control={<Radio />}
-                    label="Daily"
-                  />
-                  <FormControlLabel
-                    value="weekly"
-                    control={<Radio />}
-                    label="Weekly"
-                  />
-                </RadioGroup>
-              </FormControl>
+                value={typeOfSchedule}
+                onChange={handleChangeTypeOfSchedule}
+                arrayOptions={arrayOfSecondOptions}
+              />
+              
               {typeOfSchedule === "date" && (
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DateTimePicker
