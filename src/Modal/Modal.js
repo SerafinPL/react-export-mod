@@ -22,6 +22,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DatePicker, DateTimePicker, TimePicker } from "@mui/lab";
 
 import useFetchData from "../fetchData";
+import RadioComponent from "../Components/RadioComponent";
 
 const Modal = () => {
   const TypoStyleOBJ = {
@@ -29,8 +30,10 @@ const Modal = () => {
     color: "#000",
     height: "50px",
     m: 2,
-    mt: 3,
+    mt: 5,
   };
+
+  const arrayOfFirstOptions = [{value: 'Excel', label: 'Excel'}, {value: 'CSV', label: 'CSV'}]
   const { data, fetchData } = useFetchData();
 
   const [email, setEmail] = useState("");
@@ -92,15 +95,15 @@ const Modal = () => {
               <Typography sx={TypoStyleOBJ}>E-mail to</Typography>
               <Typography sx={TypoStyleOBJ}>Schedule</Typography>
               {typeOfSchedule === "date" && (
-                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>Date</Typography>
+                <Typography sx={TypoStyleOBJ}>Date</Typography>
               )}
               {typeOfSchedule === "daily" && (
-                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>
+                <Typography sx={TypoStyleOBJ}>
                   Everyday at
                 </Typography>
               )}
               {typeOfSchedule === "weekly" && (
-                <Typography sx={{ ...TypoStyleOBJ, mt: 5 }}>Every</Typography>
+                <Typography sx={TypoStyleOBJ}>Every</Typography>
               )}
             </Box>
             <Box>
@@ -113,11 +116,10 @@ const Modal = () => {
                 onChange={handleChangeName}
               />
 
-              <FormControl sx={{ height: "50px", m: 1, pl: 2, color: "#000" }}>
+              {/* <FormControl sx={{ height: "50px", m: 1, pl: 2, color: "#000" }}>
                 <RadioGroup
                   row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
+                  
                   sx={{ height: "50px", textAlign: "left" }}
                   value={typeOfExport}
                   onChange={handleChangeTypeOfExport}
@@ -133,7 +135,8 @@ const Modal = () => {
                     label="CSV"
                   />
                 </RadioGroup>
-              </FormControl>
+              </FormControl> */}
+              <RadioComponent radioStyle={{ height: "50px", textAlign: "left" }} value={typeOfExport} onChange={handleChangeTypeOfExport} arrayOptions={arrayOfFirstOptions}/>
               <TextField
                 id="email"
                 label="client@company.com"
@@ -153,8 +156,6 @@ const Modal = () => {
               >
                 <RadioGroup
                   row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
                   value={typeOfSchedule}
                   onChange={handleChangeTypeOfSchedule}
                 >
