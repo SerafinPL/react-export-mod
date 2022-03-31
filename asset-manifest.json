@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-export-mod/static/css/main.1f295b28.css",
-    "main.js": "/react-export-mod/static/js/main.733f0813.js",
+    "main.js": "/react-export-mod/static/js/main.dd00622d.js",
     "index.html": "/react-export-mod/index.html",
     "main.1f295b28.css.map": "/react-export-mod/static/css/main.1f295b28.css.map",
-    "main.733f0813.js.map": "/react-export-mod/static/js/main.733f0813.js.map"
+    "main.dd00622d.js.map": "/react-export-mod/static/js/main.dd00622d.js.map"
   },
   "entrypoints": [
     "static/css/main.1f295b28.css",
-    "static/js/main.733f0813.js"
+    "static/js/main.dd00622d.js"
   ]
 }
