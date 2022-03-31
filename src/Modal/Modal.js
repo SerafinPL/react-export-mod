@@ -98,6 +98,7 @@ const Modal = () => {
           <Box
             sx={{
               display: "flex",
+              
             }}
           >
             <Box sx={{ width: "320px" }}>

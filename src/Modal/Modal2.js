@@ -27,6 +27,7 @@ const Modal = () => {
     height: "50px",
     m: 2,
     mt: 3,
+    display: 'inline'
   };
 
   const arrayOfFirstOptions = [
@@ -95,9 +96,10 @@ const Modal = () => {
           <Box
             sx={{
               display: "flex",
+              flexDirection: 'column'
             }}
           >
-            <Box sx={{ width: "320px" }}>
+            <Box sx={{  }}>
               <Typography sx={TypoStyleOBJ}>Report Name</Typography>
               <TextField
                 id="name"
@@ -129,7 +131,7 @@ const Modal = () => {
                 onChange={handleChangeEmail}
               />
               </Box>
-            <Box>
+            <Box sx={{height: 125}}>
               <Typography sx={TypoStyleOBJ}>Schedule</Typography>
               <RadioComponent
                 controlStyle={{
@@ -196,7 +198,7 @@ const Modal = () => {
                     sx={{
                       width: "20%",
                       height: "50px",
-                      m: 1,
+                      m: 2,
                       color: "#000",
                       float: "left",
                       mt: 5,
@@ -227,6 +229,7 @@ const Modal = () => {
                       color: "#000",
                       float: "left",
                       mt: 5,
+                      lineHeight: '3.5'
                     }}
                   >
                     {" "}
